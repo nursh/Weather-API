@@ -1,0 +1,19 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "An application for weather api",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "api"
+  ],
+  "author": "nur-sh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
