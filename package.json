@@ -4,8 +4,7 @@
   "description": "An application for weather api",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -w server.js server.js",
-    "test": "mocha"
+    "start": "nodemon -w server.js server.js"
   },
   "keywords": [
     "express",
