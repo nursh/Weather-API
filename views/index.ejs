@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Weather API</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Weather API Application</h1>
+    <div class="col-md-4 weather">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Weather Info</th>
+            <th>Stat.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th> Current Temperature</th>
+            <td id="temp"></td>
+          </tr>
+          <tr>
+            <th> Min. Temperature</th>
+            <td id="mintemp"></td>
+          </tr>
+          <tr>
+            <th> Max. Temperature</th>
+            <td id="maxtemp"></td>
+          </tr>
+          <tr>
+            <th>Location</th>
+            <td id="city"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+      if (!navigator.geolocation){
+        alert("Geolocation is not supported by your browser");
+      }
+
+      function success(position) {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            lat: position.coords.latitude,
+            long: position.coords.longitude
+          })
+        }).then(res => {
+          res.json().then(data => {
+            document.getElementById('temp').innerHTML = `${data.temp}&#8451;`
+            document.getElementById('mintemp').innerHTML = `${data.minTemp}&#8451;`
+            document.getElementById('maxtemp').innerHTML = `${data.maxTemp}&#8451;`
+            document.getElementById('city').textContent = `${data.city}, ${data.country}`
+          })
+        }).catch(err => {
+          console.log(err)
+        })
+      }
+
+      function error() {
+        alert("Unable to retrieve your location");
+      }
+
+      navigator.geolocation.getCurrentPosition(success, error);
+  </script>
+</body>
+</html>
