@@ -2,7 +2,8 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       request = require('request-promise'),
-      port = 3000,
+      dotenv = require('dotenv').config()
+      port = process.env.PORT || 8080,
       app = express();
 
 app.use(bodyParser.json())
@@ -16,7 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const apikey = 'fbb1d04a44a8642c3c6fae9fa3faf2da';
+  const apikey = process.env.APIKEY;
   const options = {
     uri: `http://api.openweathermap.org/data/2.5/weather?lat=${req.body.lat}&lon=${req.body.long}&appid=${apikey}&units=metric`,
     json: true
@@ -35,5 +36,5 @@ app.post('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log('Weather Application is running on port 3000')
+  console.log(`Weather Application is running on port:${port}`)
 })
