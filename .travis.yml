@@ -5,4 +5,5 @@ notifications:
   email: false
 deploy:
   provider: heroku
+  api_key: 45f24b05-9143-4f1b-b52b-81217ebe8430
   app: weather-api-app
