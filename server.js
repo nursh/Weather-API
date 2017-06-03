@@ -2,7 +2,7 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       request = require('request-promise'),
-      dotenv = require('dotenv').config()
+      dotenv = require('dotenv').config(),
       port = process.env.PORT || 8080,
       app = express();
 
@@ -32,7 +32,7 @@ app.post('/', (req, res) => {
       weather.country = response.sys.country;
       res.json(weather);
     })
-    .catch( err => console.log(`Error`));
+    .catch( err => console.log(`Error: `, err));
 })
 
 app.listen(port, () => {
