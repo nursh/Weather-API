@@ -10,9 +10,7 @@ const express = require('express'),
 
 
 app.use(helmet.hsts({
-  maxAge: ms('1y'),
-  includeSubDomains: true,
-  preload: true
+  maxAge: ms('1y')
 }))
 
 app.use(bodyParser.json())
