@@ -4,7 +4,9 @@
   "description": "An application for weather api",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -w server.js server.js"
+    "start": "nodemon -w server.js server.js",
+    "test": "mocha",
+    "coverage": "nyc mocha"
   },
   "keywords": [
     "express",
@@ -23,6 +25,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.4.1"
+    "coveralls": "^2.13.1",
+    "mocha": "^3.4.1",
+    "nyc": "^11.0.2"
   }
 }
