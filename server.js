@@ -2,9 +2,18 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       request = require('request-promise'),
+      helmet = require('helmet'),
+      ms = require('ms'),
       dotenv = require('dotenv').config(),
       port = process.env.PORT || 8080,
       app = express();
+
+
+app.use(helmet.hsts({
+  maxAge: ms('1y'),
+  includeSubDomains: true,
+  preload: true
+}))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}));
